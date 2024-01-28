@@ -7,7 +7,7 @@ const Cookie = () => {
   const navigate = useNavigate();
   const handleAllow = async () => {
     try {
-      await axios.post(`${BASE_URL}/cards/set-cookie`).then((res) => console.log(res));
+      await axios.get(`${BASE_URL}/cards/set-cookie`).then((res) => console.log(res));
       navigate("/cards");
     } catch (error) {
       console.log(error);
