@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Spinner from "./Spinner";
+import BASE_URL from "../service"
 
 const AddCard = () => {
   const [loading, setLoading] = useState(false);
@@ -18,7 +19,7 @@ const AddCard = () => {
   const CreateCard = async () => {
     try {
       setLoading(true);
-      const response = await axios.post("/cards/new-card", formData, {
+      const response = await axios.post(`${BASE_URL}/cards/new-card`, formData, {
         headers: {
           "Content-Type": "application/json",
         },
