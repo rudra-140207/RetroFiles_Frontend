@@ -1,1 +1,2 @@
-export const BASE_URL = "https://retrofiles-07.netlify.app" ;
+const BASE_URL = "https://retrofiles-07-api.onrender.com" ;
+export default BASE_URL ;
