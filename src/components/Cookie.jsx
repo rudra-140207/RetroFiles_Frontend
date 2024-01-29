@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import BASE_URL from "../service"
 
 const Cookie = () => {
   const navigate = useNavigate();
   const handleAllow = async () => {
     try {
-      await axios.get(`${BASE_URL}/cards/set-cookie`).then((res) => console.log(res));
+      await axios.get("/cards/set-cookie",{
+        withCredentials: true,
+      }).then((res) => console.log(res));
       navigate("/cards");
     } catch (error) {
       console.log(error);
@@ -17,7 +18,7 @@ const Cookie = () => {
   useEffect(() => {
     const checkCookie = async () => {
       try {
-        const res = await axios.post(`${BASE_URL}/cards/verify-cookie`);
+        const res = await axios.post("/cards/verify-cookie");
         if (res.data.message === "Exist") {
           navigate("/cards");
         }

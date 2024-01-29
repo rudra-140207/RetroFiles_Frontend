@@ -5,8 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { GrEdit } from "react-icons/gr";
 import { AiFillLike } from "react-icons/ai";
-import BASE_URL from "../service"
-
 
 const AllCards = () => {
   const [cards, setCards] = useState([]);
@@ -28,7 +26,7 @@ const AllCards = () => {
   const fetchData = () => {
     setLoading(true);
     axios
-      .get(`${BASE_URL}/cards/all-card`)
+      .get("/cards/all-card")
       .then((res) => {
         setCards(res.data.reverse());
         console.log(res.data);
@@ -42,7 +40,7 @@ const AllCards = () => {
     try {
       await axios
         .post(
-          `${BASE_URL}/cards/like`,
+          "/cards/like",
           {
             _id: cardId,
             count,
@@ -73,7 +71,7 @@ const AllCards = () => {
           try {
             console.log(cardId);
             await axios
-              .delete(`${BASE_URL}/cards/delete`, {
+              .delete("/cards/delete", {
                 data: {
                   _id: cardId,
                 },
@@ -122,7 +120,7 @@ const AllCards = () => {
   const handleOperations = async (field) => {
     try {
       const res = await axios.post(
-        `${BASE_URL}/cards/operation`,
+        "/cards/operation",
         {
           field,
         },
