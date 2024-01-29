@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Spinner from "./Spinner";
+import BASE_URL from "../service";
 
 const EditCard = () => {
   const [loading, setLoading] = useState(false);
@@ -17,7 +18,8 @@ const EditCard = () => {
     setLoading(true);
     axios
       .get(
-        "/cards/card-id/${id}"
+        `${BASE_URL}
+      /cards/card-id/${id}`
       )
       .then((res) => {
         setName(res.data.creator);
@@ -41,7 +43,8 @@ const EditCard = () => {
     try {
       setLoading(true);
       const response = await axios.put(
-        "/cards/edit-card/${id}",
+        `${BASE_URL}
+      /cards/edit-card/${id}`,
         formData,
         {
           headers: {
