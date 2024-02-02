@@ -31,7 +31,7 @@ const AllCards = () => {
       .get(`${BASE_URL}/cards/all-card`)
       .then((res) => {
         setCards(res.data.reverse());
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch((error) => console.log(error));
 
@@ -130,9 +130,10 @@ const AllCards = () => {
           headers: {
             "Content-Type": "application/json",
           },
+          withCredentials : true ,
         }
       );
-      // console.log(res);
+      console.log(res);
       if (res) {
         return res;
       }

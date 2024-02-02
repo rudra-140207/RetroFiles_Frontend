@@ -18,9 +18,9 @@ const EditCard = () => {
     setLoading(true);
     axios
       .get(
-        `${BASE_URL}
-      /cards/card-id/${id}`
-      )
+        `${BASE_URL}/cards/card-id/${id}`,{
+        withCredentials : true,
+      })
       .then((res) => {
         setName(res.data.creator);
         setTitle(res.data.title);
@@ -43,8 +43,7 @@ const EditCard = () => {
     try {
       setLoading(true);
       const response = await axios.put(
-        `${BASE_URL}
-      /cards/edit-card/${id}`,
+        `${BASE_URL}/cards/edit-card/${id}`,
         formData,
         {
           headers: {

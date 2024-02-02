@@ -9,8 +9,11 @@ const Cookie = () => {
     try {
       await axios.get(`${BASE_URL}/cards/set-cookie`,{
         withCredentials : true ,
-      }).then((res) => console.log(res));
-      navigate("/cards");
+      }).then((res) =>{
+        console.log(res);
+        navigate("/cards");
+      });
+      
     } catch (error) {
       console.log(error);
     }
@@ -19,16 +22,17 @@ const Cookie = () => {
   useEffect(() => {
     const checkCookie = async () => {
       try {
-        const res = await axios.post(`${BASE_URL}/cards/verify-cookie`);
+        const res = await axios.post(`${BASE_URL}/cards/verify-cookie`,{},{
+          withCredentials : true ,
+        });
         if (res.data.message === "Exist") {
+          console.log(res);
           navigate("/cards");
         }
       } catch (error) {
         console.log(error);
       }
     };
-
-    console.log("error");
     checkCookie();
   });
 
