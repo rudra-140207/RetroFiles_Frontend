@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useState ,useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import BASE_URL from "../service"
+import Spinner from "./Spinner";
 
 const Cookie = () => {
+  const [loading,setLoading] = useState(true);
   const navigate = useNavigate();
   const handleAllow = async () => {
     try {
@@ -20,6 +22,7 @@ const Cookie = () => {
   };
 
   useEffect(() => {
+    
     const checkCookie = async () => {
       try {
         const res = await axios.post(`${BASE_URL}/cards/verify-cookie`,{},{
@@ -27,10 +30,15 @@ const Cookie = () => {
         });
         if (res.data.message === "Exist") {
           console.log(res);
+          
           navigate("/cards");
         }
+        
       } catch (error) {
         console.log(error);
+      }
+      finally{
+        setLoading(false);
       }
     };
     checkCookie();
@@ -38,6 +46,9 @@ const Cookie = () => {
 
   return (
     <div className="p-10 h-screen bg-image-landscape bg-cover bg-no-repeat bg-center xsm:p-2">
+      {loading ? (
+        <Spinner />
+      ) : (
       <div className="mt-36 border-white border-4 text-white w-1/4 m-auto h-1/3 xsm:w-3/4 xsm:h-1/3 md:w-1/2">
         <h1 className="h-1/4 w-full text-center text-2xl font-extrabold xsm:h-1/5">
           Cookie Setting
@@ -57,7 +68,8 @@ const Cookie = () => {
             <Link to={"/"}>Deny</Link>
           </span>
         </div>
-      </div>
+      </div> 
+      )}
     </div>
   );
 };

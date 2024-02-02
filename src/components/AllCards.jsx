@@ -5,12 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { GrEdit } from "react-icons/gr";
 import { AiFillLike } from "react-icons/ai";
-import BASE_URL from "../service"
-
+import BASE_URL from "../service";
 
 const AllCards = () => {
   const [cards, setCards] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   const formatDate = (dateString) => {
@@ -26,7 +25,7 @@ const AllCards = () => {
   });
 
   const fetchData = () => {
-    setLoading(true);
+    // setLoading(true);
     axios
       .get(`${BASE_URL}/cards/all-card`)
       .then((res) => {
@@ -130,7 +129,7 @@ const AllCards = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          withCredentials : true ,
+          withCredentials: true,
         }
       );
       console.log(res);
@@ -144,7 +143,7 @@ const AllCards = () => {
   };
 
   return (
-    <div className="p-10 h-full bg-black bg-image-landscape bg-cover bg-no-repeat bg-center xsm:p-2">
+    <div className="min-h-screen p-10 h-full bg-black bg-image-landscape bg-cover bg-no-repeat bg-center xsm:p-2">
       <h1 className="mt-28 font-extrabold text-white text-center text-2xl">
         Memories
       </h1>
