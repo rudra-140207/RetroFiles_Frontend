@@ -4,7 +4,7 @@ import logo from "../assets/logo-removebg-preview.png";
 
 const Navbar = () => {
   return (
-    <div class="flex bg-inheri backdrop-blur-sm fixed w-full z-10 ">
+    <div class="flex bg-inherit backdrop-blur-sm fixed w-full z-10 ">
       <div class="p-3 xsm:w-1/2">
         <Link to={"/"}>
           <img

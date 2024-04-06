@@ -2,14 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.bg-card-landscape{
-    background-image: url('./assets/peakpx2.jpg');
-}
-
 .bg-image-landscape{
     background-image: url('./assets/peakpx3.jpg');
-}
-
-.bg-home-image-landscape{
-    background-image: url('./assets/autumn-437769_1280.jpg');
 }

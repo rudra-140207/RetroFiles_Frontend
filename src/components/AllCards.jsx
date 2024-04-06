@@ -152,52 +152,45 @@ const AllCards = () => {
       ) : (
         <div class="flex px-8 m-auto justify-center w-3/4 flex-wrap xsm:w-full xsm:p-2 md:w-11/12 md:p-2">
           {cards.map((block, index) => (
-            <div class="flex m-10 w-1/4 h-96 xsm:w-3/4 xsm:m-4 xsm:h-80 md:w-2/5 md:m-4">
-              <div
-                key={block._id}
-                class="w-full relative shadow-xl shadow-cyan-800/45 hover:shadow-cyan-300/80 bg-card-landscape text-white bg-cover bg-no-repeat bg-center"
-              >
-                <h2 class="w-full bg-transparent h-8 text-center text-2xl font-extrabold">
-                  {block.title}
-                </h2>
-                <h3 class="size-lg bg-transparent w-full h-6 text-center font-bold">
-                  Created By : {block.creator}
-                </h3>
+  <div className="flex m-10 w-1/4 h-96 xsm:w-3/4 xsm:m-4 xsm:h-80 md:w-2/5 md:m-4">
+    <div
+      key={block._id}
+      className="w-full relative shadow-xl shadow-cyan-800/45 hover:shadow-cyan-300/80 bg-gradient-to-br from-purple-700 to-pink-300 text-white bg-cover bg-no-repeat bg-center rounded-lg"
+    >
+      <h2 className="w-full bg-transparent h-8 text-center text-2xl font-extrabold">
+        {block.title}
+      </h2>
+      <h3 className="size-lg bg-transparent w-full h-6 text-center font-bold">
+        Created By: {block.creator}
+      </h3>
+      <h4 className="text-md bg-transparent mt-5 w-full h-6 font-semibold p-1">
+        {formatDate(block.createdOn)}
+      </h4>
+      <div className="bg-transparent w-full font-semibold h-1/2 overflow-auto p-2 mt-5 break-words xsm:mt-1">
+        {block.description}
+      </div>
+      <div className="bg-transparent flex absolute bottom-2 w-full">
+        <div className="ml-5 flex w-max">
+          <button onClick={() => handleLike(block._id, block.likeCount)}>
+            <AiFillLike style={{ color: "blue", fontSize: "1.5rem" }} />
+          </button>
+          <span className="text-white">{block.likeCount}</span>
+        </div>
+        <div className=" w-max ml-auto">
+          <button onClick={() => handleEdit(block._id)}>
+            <GrEdit style={{ fontSize: "1.5rem", color: "white" }} />
+          </button>
+        </div>
+        <div className="w-max ml-auto mr-2">
+          <button onClick={() => handleDelete(block._id)}>
+            <RiDeleteBin6Line style={{ color: "red", fontSize: "1.5rem" }} />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+))}
 
-                <h4 class="text-md bg-transparent mt-5 w-full h-6 font-semibold p-1">
-                  {formatDate(block.createdOn)}
-                </h4>
-                <div class="bg-transparent w-full font-semibold h-1/2 overflow-auto p-2 mt-5 break-words xsm:mt-1">
-                  {block.description}
-                </div>
-                <div className="bg-transparent flex absolute bottom-2 w-full">
-                  <div className="ml-5 flex w-max">
-                    <button
-                      onClick={() => handleLike(block._id, block.likeCount)}
-                    >
-                      <AiFillLike
-                        style={{ color: "blue", fontSize: "1.5rem" }}
-                      />
-                    </button>
-                    <span className="text-white">{block.likeCount}</span>
-                  </div>
-
-                  <div className=" w-max ml-auto">
-                    <button onClick={() => handleEdit(block._id)}>
-                      <GrEdit style={{ fontSize: "1.5rem", color: "white" }} />
-                    </button>
-                  </div>
-                  <div className="w-max ml-auto mr-2">
-                    <button onClick={() => handleDelete(block._id)}>
-                      <RiDeleteBin6Line
-                        style={{ color: "red", fontSize: "1.5rem" }}
-                      />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
         </div>
       )}
     </div>
